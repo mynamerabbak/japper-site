@@ -1,0 +1,81 @@
+---
+const title = "Faces in the Obscurity";
+const titleAr = "وجوه في العتمة";
+
+const project = {
+  status: "Travail en cours",
+  short: "Sculptures / Installations / Vidéos / Photographies",
+  descriptionParagraphs: [
+    "Woujouh f Dhlem est une série de portraits réalisée à Tunis en 2025. Le projet part d’une image vue avec clarté : l’avenir est opaque. La visibilité sur ce qui vient manque. Cette opacité existe comme fait, et chaque personne la traverse à sa manière. La série donne une forme à cette situation en passant par le visage, par l’attente, par l’obscurité.",
+    "Les portraits vivent au bord du visible. Les images restent très sombres, et elles se révèlent lorsque la lumière les touche d’une manière précise, selon l’angle et l’intensité. Le regard s’ajuste, se déplace, recommence. La visibilité devient une condition concrète, et cette condition rejoint l’idée de départ : une réalité où l’on avance avec une part de futur illisible.",
+    "La prise de vue repose sur un protocole répété, identique pour chaque participant. Une zone de transition précède l’entrée. Je guide la personne par la main, puis je l’installe sur une chaise dans un espace préparé pour une obscurité totale et un silence total. Je pose quelques questions simples sur ce qu’elle ressent, puis l’attente dure en moyenne vingt minutes. La photographie arrive à un moment inattendu, dans l’état où les repères disparaissent et où l’esprit reste en suspens. Le but consiste à saisir l’expression qui existe dans cette condition précise, avant que le visage se réorganise en fonction d’un événement compris.",
+    "Les participants couvrent un large spectre, d’environ 16 à 60 ans. Le groupe réunit des proches et des inconnus, avec une participation volontaire. Le projet compte plus d’une vingtaine de participations, et certaines tentatives aboutissent à des images moins exploitables. Les portraits restent anonymes, et un accord écrit encadre la participation.",
+    "La présentation des images se déroule dans la Médina, dans une petite pièce dont l’intérieur se compose entièrement de surfaces métalliques, du sol au plafond. L’espace évoque une grotte par sa matière et ses reliefs, avec des formes proches de cristaux, mais en métal. La lumière y reste naturelle, souvent bleutée, et le son appartient au quartier : la journée apporte un fond vivant, puis le soir installe un calme plus marqué. L’accès fonctionne sur un mode simple et direct, au rythme du lieu : on entre librement, on regarde, on ressort. La rencontre se fait au hasard du passage, avec une fréquentation surtout locale dans une impasse où circulent principalement les habitants.",
+    "Le projet tient dans cette articulation : des visages enregistrés dans l’obscurité totale, puis placés dans un espace métallique ouvert, où la lumière circule, se réfléchit, et où les portraits apparaissent par instants. La série transforme l’opacité en expérience concrète : une image vue avec clarté devient une situation partagée, accessible, et lisible par fragments.",
+  ],
+};
+
+const images = [
+  { src: "/faces-in-the-obscurity/faces_in_the_dark_01-1.jpg", caption: "Étude — apparition fragmentaire.", meta: "2025" },
+  { src: "/faces-in-the-obscurity/faces_in_the_dark_01-2.jpg", caption: "Étude — visage absorbé par l’ombre.", meta: "2025" },
+  { src: "/faces-in-the-obscurity/faces_in_the_dark_01-3.jpg", caption: "Étude — seuil entre figure et surface.", meta: "2025" },
+  { src: "/faces-in-the-obscurity/faces_in_the_dark_01-4.jpg", caption: "Étude — effacement progressif.", meta: "2025" },
+  { src: "/faces-in-the-obscurity/faces_in_the_dark_01-5.jpg", caption: "Étude — tension matière / peau.", meta: "2025" },
+  { src: "/faces-in-the-obscurity/faces_in_the_dark_01-6.jpg", caption: "Étude — apparition instable.", meta: "2025" },
+  { src: "/faces-in-the-obscurity/faces_in_the_dark_01-7.jpg", caption: "Étude — perte de lisibilité.", meta: "2025" },
+];
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body class="page">
+    <nav class="nav">
+      <a class="navlink" href="/work">Travaux</a>
+      <a class="navlink" href="/">Accueil</a>
+    </nav>
+
+    <main class="container">
+      <header>
+        <h1 class="title">{title}</h1>
+        <p class="titleAr" dir="rtl" lang="ar">{titleAr}</p>
+        <p class="subtitle">{project.status}</p>
+        <p class="lead">{project.short}</p>
+      </header>
+
+      <section class="section">
+        <h2 class="h2">Description</h2>
+        {project.descriptionParagraphs.map((paragraph) => (
+          <p class="text">{paragraph}</p>
+        ))}
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Images</h2>
+
+        <div class="grid">
+          {images.map((img) => (
+            <figure class="card">
+              <a class="imglink" href={img.src} target="_blank" rel="noreferrer">
+                <img class="img" src={img.src} alt={img.caption} loading="lazy" />
+              </a>
+              <figcaption class="caption">
+                <div class="captionText">{img.caption}</div>
+                <div class="captionMeta">{img.meta}</div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <div class="actions">
+        <a class="button" href="/work">Retour</a>
+      </div>
+    </main>
+  </body>
+</html>

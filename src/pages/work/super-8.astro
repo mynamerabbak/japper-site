@@ -1,0 +1,150 @@
+---
+const work = {
+  heading: "Selected Works",
+  title: "Super 8",
+  year: "2021",
+  location: "Prague, Czech Republic",
+};
+
+const introParagraphs = [
+  "Super 8 is structured around a repeated, mechanical ritual: a woman brushing her teeth in front of a mirror. The gesture is simple, everyday, and functional - performed several times a day without reflection - yet it becomes the core mechanism of the film. The sound of brushing, immediately recognizable, acts as a rhythmic trigger, drawing the viewer into a suspended state similar to the moment when thought drifts and attention loosens. The action is both ritualistic and automatic: a gesture that maintains the body's ability to eat, repeated endlessly to sustain itself.",
+  "The mirror operates simultaneously as surface and threshold. What usually reflects the world becomes a passage into its inverse. The character physically crosses into the reflected space, where movements remain symmetrical but reversed, and time folds back on itself. The film is built as a closed loop: repetition replaces progression, and the passage into the reflected world leads back to its point of origin. Shot on analog film with a vintage Bolex camera, Super 8 reinforces this structure materially. The title refers both to the medium and to the figure of the loop: the number eight, the movement traced by the body, and the infinite return the film enacts - ending where it begins, and beginning again.",
+];
+
+const projectInfo = [
+  { label: "Year", value: "2021" },
+  { label: "Location", value: "Prague, Czech Republic" },
+  { label: "Type", value: "Experimental film" },
+  { label: "Medium", value: "Shot on Super 16mm film using a vintage Bolex camera" },
+  { label: "Duration", value: "1 min 32 (loop)" },
+  { label: "Color", value: "Color" },
+  { label: "Sound", value: "Stereo" },
+  { label: "Presentation", value: "Standalone film, adaptable to looped projection or installation context" },
+  { label: "Production", value: "Written, directed, filmed, and edited by Ramses Komuro. Edited on a mechanical flatbed editing table." },
+  { label: "Status", value: "Completed" },
+];
+
+const vimeoUrl = "https://vimeo.com/1057081133/5f169c3ab8?share=copy";
+
+const images = [
+  { src: "/super-8/SUPER8_web-1.jpg", alt: "Super 8 still 01", caption: "Still 01", meta: "2021" },
+  { src: "/super-8/SUPER8_web-2.jpg", alt: "Super 8 still 02", caption: "Still 02", meta: "2021" },
+  { src: "/super-8/SUPER8_web-4.jpg", alt: "Super 8 still 04", caption: "Still 04", meta: "2021" },
+  { src: "/super-8/SUPER8_web-5.jpg", alt: "Super 8 still 05", caption: "Still 05", meta: "2021" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{work.title} ({work.year})</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body class="page">
+    <nav class="nav">
+      <a class="navlink" href="/work">Works</a>
+      <a class="navlink" href="/">Home</a>
+    </nav>
+
+    <main class="container">
+      <header class="header">
+        <p class="kicker">{work.heading}</p>
+        <h1 class="title">{work.title}</h1>
+        <p class="metaLine">{work.year} · {work.location}</p>
+      </header>
+
+      <section class="section">
+        <h2 class="h2">Project Text</h2>
+        {introParagraphs.map((p) => (
+          <p class="text">{p}</p>
+        ))}
+      </section>
+
+      {images.length > 0 && (
+        <section class="section">
+          <h2 class="h2">Images / Stills</h2>
+
+          <div class="grid">
+            {images.map((img) => (
+              <figure class="card">
+                <a href={img.src} target="_blank" rel="noreferrer">
+                  <img class="img" src={img.src} alt={img.alt} loading="lazy" />
+                </a>
+                <figcaption class="caption">
+                  <div class="captionText">{img.caption}</div>
+                  <div class="captionText">{img.meta}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="section">
+        <h2 class="h2">Project Information</h2>
+
+        <div class="info">
+          {projectInfo.map((item) => (
+            <div class="infoRow">
+              <div class="infoLabel">{item.label}</div>
+              <div class="infoValue">{item.value}</div>
+            </div>
+          ))}
+
+          <div class="infoRow">
+            <div class="infoLabel">Video</div>
+            <div class="infoValue">
+              <a class="infoLink" href={vimeoUrl} target="_blank" rel="noreferrer">
+                {vimeoUrl}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <a class="button" href="/work">Back</a>
+      </div>
+    </main>
+
+    <style>
+      .info {
+        max-width: 80ch;
+      }
+
+      .infoRow {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 12px;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .infoLabel {
+        font-size: 14px;
+        opacity: 0.75;
+        letter-spacing: 0.04rem;
+      }
+
+      .infoValue {
+        font-size: 14px;
+        opacity: 0.9;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+      }
+
+      .infoLink {
+        color: white;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 600px) {
+        .infoRow {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </body>
+</html>

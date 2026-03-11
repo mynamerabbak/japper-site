@@ -1,0 +1,88 @@
+---
+const work = {
+  heading: "Selected Works",
+  title: "Mirror Mirror",
+  year: "2015",
+  location: "Tokyo, Japan",
+  medium: "Video, Interactive Media (using Pure Data)",
+  description:
+    "Mirror Mirror explores the concept of infinite reflection—like gazing into someone’s eyes and seeing your own reflection in perpetuity. This interactive piece uses Pure Data to process live ambient sound from a laptop or smartphone, layering those sounds while the visuals delve deeper and deeper into the shared gaze of two individuals. The result is an immersive experience where the reflection of a reflection becomes a portal, prompting viewers to consider how identity, perception, and the ‘other side’ of reflection intertwine.",
+  linkUrl: "https://grosfi.ch/HG2M6r6tT53",
+  linkLabel: "Download program (available until Feb 21)",
+};
+
+const images = [
+  { src: "/mirror-mirror/mirror2_web-1.jpg", alt: "Mirror Mirror still 01", caption: "Still 01", meta: "2015" },
+  { src: "/mirror-mirror/mirror2_web-2.jpg", alt: "Mirror Mirror still 02", caption: "Still 02", meta: "2015" },
+  { src: "/mirror-mirror/mirror2_web-3.jpg", alt: "Mirror Mirror still 03", caption: "Still 03", meta: "2015" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{work.title} ({work.year})</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body class="page">
+    <nav class="nav">
+      <a class="navlink" href="/work">Works</a>
+      <a class="navlink" href="/">Home</a>
+    </nav>
+
+    <main class="container">
+      <header class="header">
+        <p class="kicker">{work.heading}</p>
+        <h1 class="title">{work.title}</h1>
+        <p class="metaLine">{work.year} · {work.location}</p>
+      </header>
+
+      <section class="section">
+        <h2 class="h2">Medium</h2>
+        <p class="text">{work.medium}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Brief Description</h2>
+        <p class="text">{work.description}</p>
+      </section>
+
+      {work.linkUrl && (
+        <section class="section">
+          <h2 class="h2">Link</h2>
+          <p class="text">
+            <a class="navlink" href={work.linkUrl} target="_blank" rel="noreferrer">
+              {work.linkLabel || "Link"}
+            </a>
+          </p>
+        </section>
+      )}
+
+      {images.length > 0 && (
+        <section class="section">
+          <h2 class="h2">Images / Stills</h2>
+
+          <div class="grid">
+            {images.map((img) => (
+              <figure class="card">
+                <a class="imglink" href={img.src} target="_blank" rel="noreferrer">
+                  <img class="img" src={img.src} alt={img.alt} loading="lazy" />
+                </a>
+                <figcaption class="caption">
+                  <div class="captionText">{img.caption}</div>
+                  {img.meta && <div class="captionMeta">{img.meta}</div>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div class="actions">
+        <a class="button" href="/work">Back</a>
+      </div>
+    </main>
+  </body>
+</html>

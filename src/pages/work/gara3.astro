@@ -1,0 +1,90 @@
+---
+const work = {
+  heading: "Selected Works",
+  title: "Gara3",
+  year: "2025",
+  location: "Tunis / Tokyo",
+  medium: "Video, experimental film",
+  description: `Duration: 15 min 23 sec
+Language: Tunisian Arabic
+Subtitles: Japanese, English, French, Chinese
+Sound: Direct sound, sound design, limited effects
+Presentation: Single-channel projection (primary). Installation format possible.
+Credits: Written, directed, shot, and edited by JAPPER. Sound by Makoto Sakamoto.
+
+GARA3 starts with something blunt. A head. Hair. The clipper. The decision. Shara wants it done, again and again, like a method you can pass from hand to hand, like a rule you can press into someone's skull until it sticks. Sarla becomes the surface where the repetition lands. And there's that mask, full-face, hard, like a metallic crystallization. It stays. First on Shara, then it moves onto Sarla later, as if the role itself is a thing you can wear, transfer, reassign. No psychology lecture. Just the object on the face, the fact of it, the way it changes who owns the scene.
+
+It has a beginning and an end, sure, but the film breaks clean in the middle. The first half goes forward, then time flips. After the break, everything runs backward. Gestures unwind. Actions reverse. The audio reverses too. Not a cute trick. It turns the whole thing into one continuous loop that folds back on itself. You don't decode the rupture. You feel it. Time stops behaving. It starts repeating. That's the point.
+
+Everything happens inside a sealed space, a basement, pressurized, shot to make confinement heavier, colder, more obvious. The objects are practical and brutal: a mirror, hair tools, the clipper, metallic elements that keep the room reflective without turning it into decoration. One sodium lamp. The light that makes skin look wrong. Colors inverted into an X-ray, radioactive tint, like the scene isn't being filmed so much as scanned, processed, registered.
+
+At the core it's repetition and return. The refusal to accept mediocrity, the impulse to act like this time things will finally change, and then the recurring experience of watching it all slide backward again. One step forward, one step back, then forward again with a slight variation, and the loop keeps chewing. The shaved head isn't "beauty." It's a cut straight into the intention to please, a try at severing it at the root. And then hair grows back. What you thought you erased returns. The radical act can't stay permanent. History can't stop rebuilding itself anyway.`,
+  linkUrl: "",
+  linkLabel: "",
+};
+
+const descriptionParagraphs = work.description
+  .split(/\n\s*\n/)
+  .map((paragraph) => paragraph.trim())
+  .filter(Boolean);
+
+const images = [
+  { src: "/gara3/GARA3_zeb-1.jpg", alt: "Gara3 still 01", caption: "Still 01", meta: "2024" },
+  { src: "/gara3/GARA3_zeb-2.jpg", alt: "Gara3 still 02", caption: "Still 02", meta: "2024" },
+  { src: "/gara3/GARA3_zeb-3-2.jpg", alt: "Gara3 still 03", caption: "Still 03", meta: "2024" },
+  { src: "/gara3/GARA3_zeb-4.jpg", alt: "Gara3 still 04", caption: "Still 04", meta: "2024" },
+  { src: "/gara3/GARA3_zeb-5.jpg", alt: "Gara3 still 05", caption: "Still 05", meta: "2024" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{work.title} ({work.year})</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body class="page">
+    <nav class="nav">
+      <a class="navlink" href="/work">Works</a>
+      <a class="navlink" href="/">Home</a>
+    </nav>
+
+    <main class="container">
+      <header class="header">
+        <p class="kicker">{work.heading}</p>
+        <h1 class="title">{work.title}</h1>
+        <p class="metaLine">{work.year} · {work.location}</p>
+      </header>
+
+      <section class="section">
+        <h2 class="h2">Medium</h2>
+        <p class="text">{work.medium}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Brief Description</h2>
+        {descriptionParagraphs.map((paragraph) => (
+          <p class="text" style="white-space: pre-line;">
+            {paragraph}
+          </p>
+        ))}
+      </section>
+
+      <div class="grid">
+        {images.map((img) => (
+          <figure class="card">
+            <a class="imglink" href={img.src} target="_blank" rel="noreferrer">
+              <img class="img" src={img.src} alt={img.alt} loading="lazy" />
+            </a>
+          </figure>
+        ))}
+      </div>
+
+      <div class="actions">
+        <a class="button" href="/work">Back</a>
+      </div>
+    </main>
+  </body>
+</html>

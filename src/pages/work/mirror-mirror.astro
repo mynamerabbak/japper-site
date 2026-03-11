@@ -1,0 +1,75 @@
+---
+const work = {
+  heading: "Selected Works",
+  title: "Mirror Mirror",
+  year: "2015",
+  location: "Tokyo, Japon",
+  medium: "Video, Interactive Media (Pure Data)",
+  description: `
+Mirror Mirror (2015, Tokyo, Japon) est une pièce vidéo interactive construite autour d’un face-à-face : deux personnes se regardent, et l’œil devient un miroir. À la surface de l’œil, un reflet apparaît, puis un autre reflet à l’intérieur du reflet, comme lorsque deux miroirs se font face. Le mouvement visuel suit cette idée de manière concrète : l’image plonge progressivement dans l’œil, zoome dans la zone du reflet, avance vers une profondeur, puis revient. Le parcours se répète en boucle, avec une progression et un retour qui maintiennent la sensation d’un passage continu entre soi et l’autre. Le titre joue volontairement sur la double nature de la “réflexion” : reflet optique et pensée. Le projet suit cette ligne : regarder, se retrouver dans le regard de l’autre, puis continuer à avancer dans cette chaîne d’images, jusqu’à poser la question de ce qu’il y a “après” les reflets.
+
+Le son constitue la dimension active du dispositif. Un ordinateur capte le son ambiant du lieu et le transforme en temps réel avec Pure Data. La matière sonore se superpose, se modifie, et génère une musique à partir de ce qui est déjà présent dans l’espace. Les interventions du public changent directement le résultat : un claquement de doigts, un bruit sec, un choc court modifient le rythme et déclenchent des variations. L’expérience reste simple dans sa forme : une projection vidéo et un dispositif sonore. Elle s’adapte à une personne ou à un groupe, tant que le son peut être capté. La pièce existe ainsi comme une situation : un regard qui s’enfonce dans le regard, et un espace dont la musique se recompose à partir de ce que les corps produisent, ici et maintenant.
+
+Crédits : concept, tournage, montage — Ramses Komuro. Programmation Pure Data et son — Jimi Mased.
+`.trim(),
+};
+
+const images = [
+  { src: "/mirror-mirror/mirror2_web-1.jpg", alt: "Mirror Mirror still 01", caption: "Still 01" },
+  { src: "/mirror-mirror/mirror2_web-2.jpg", alt: "Mirror Mirror still 02", caption: "Still 02" },
+  { src: "/mirror-mirror/mirror2_web-3.jpg", alt: "Mirror Mirror still 03", caption: "Still 03" },
+];
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{work.title} ({work.year})</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body class="page">
+    <nav class="nav">
+      <a class="navlink" href="/work">Travaux</a>
+      <a class="navlink" href="/">Accueil</a>
+    </nav>
+
+    <main class="container">
+      <header class="header">
+        <p class="kicker">{work.heading}</p>
+        <h1 class="title">{work.title}</h1>
+        <p class="metaLine">{work.year} · {work.location}</p>
+      </header>
+
+      <section class="section">
+        <h2 class="h2">Medium</h2>
+        <p class="text">{work.medium}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Description</h2>
+        <p class="text">{work.description}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Images / Stills</h2>
+
+        <div class="grid">
+          {images.map((img) => (
+            <figure class="card">
+              <img class="img" src={img.src} alt={img.alt} loading="lazy" />
+              <figcaption class="caption">
+                <div class="captionText">{img.caption}</div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <div class="actions">
+        <a class="button" href="/work">Retour</a>
+      </div>
+    </main>
+  </body>
+</html>

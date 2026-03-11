@@ -1,0 +1,96 @@
+---
+const work = {
+  heading: "Selected Works",
+  title: "Through the Glare of Fracture",
+  year: "",
+  location: "",
+  medium: "Short film · 16mm",
+  description:
+    "Through the Glare of Fracture is a short film shot on 16mm. (Replace this text with your final description.)",
+  linkUrl: "",
+  linkLabel: "",
+};
+
+const images = [
+  { src: "/through-the-glare-of-fracture/through the glare of fracture_web-1.jpg", alt: "Through the Glare of Fracture still 01", caption: "Still 01", meta: "" },
+  { src: "/through-the-glare-of-fracture/through the glare of fracture_web-2.jpg", alt: "Through the Glare of Fracture still 02", caption: "Still 02", meta: "" },
+  { src: "/through-the-glare-of-fracture/through the glare of fracture_web-3.jpg", alt: "Through the Glare of Fracture still 03", caption: "Still 03", meta: "" },
+  { src: "/through-the-glare-of-fracture/through the glare of fracture_web-4.jpg", alt: "Through the Glare of Fracture still 04", caption: "Still 04", meta: "" },
+  { src: "/through-the-glare-of-fracture/through the glare of fracture_web-5.jpg", alt: "Through the Glare of Fracture still 05", caption: "Still 05", meta: "" },
+  { src: "/through-the-glare-of-fracture/through the glare of fracture_web-6.jpg", alt: "Through the Glare of Fracture still 06", caption: "Still 06", meta: "" },
+  { src: "/through-the-glare-of-fracture/through the glare of fracture_web-7.jpg", alt: "Through the Glare of Fracture still 07", caption: "Still 07", meta: "" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{work.title}{work.year ? ` (${work.year})` : ""}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body class="page">
+    <nav class="nav">
+      <a class="navlink" href="/work">Works</a>
+      <a class="navlink" href="/">Home</a>
+    </nav>
+
+    <main class="container">
+      <header class="header">
+        <p class="kicker">{work.heading}</p>
+        <h1 class="title">{work.title}</h1>
+        {(work.year || work.location) && (
+          <p class="metaLine">
+            {work.year}{work.year && work.location ? " · " : ""}{work.location}
+          </p>
+        )}
+      </header>
+
+      <section class="section">
+        <h2 class="h2">Medium</h2>
+        <p class="text">{work.medium}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="h2">Brief Description</h2>
+        <p class="text">{work.description}</p>
+      </section>
+
+      {work.linkUrl && (
+        <section class="section">
+          <h2 class="h2">Link</h2>
+          <p class="text">
+            <a class="navlink" href={work.linkUrl} target="_blank" rel="noreferrer">
+              {work.linkLabel || "Link"}
+            </a>
+          </p>
+        </section>
+      )}
+
+      {images.length > 0 && (
+        <section class="section">
+          <h2 class="h2">Images / Stills</h2>
+
+          <div class="grid">
+            {images.map((img) => (
+              <figure class="card">
+                <a class="imglink" href={img.src} target="_blank" rel="noreferrer">
+                  <img class="img" src={img.src} alt={img.alt} loading="lazy" />
+                </a>
+                <figcaption class="caption">
+                  <div class="captionText">{img.caption}</div>
+                  {img.meta && <div class="captionMeta">{img.meta}</div>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div class="actions">
+        <a class="button" href="/work">Back</a>
+      </div>
+    </main>
+  </body>
+</html>

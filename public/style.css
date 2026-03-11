@@ -1,0 +1,272 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background: black;
+  color: white;
+}
+
+body.page {
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: black;
+  color: white;
+}
+
+.nav {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  z-index: 10;
+}
+
+.navlink {
+  color: white;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.navlink:hover {
+  border-color: rgba(255,255,255,0.75);
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 96px 20px 60px;
+}
+
+.section {
+  margin-top: 28px;
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 0.08rem;
+  margin: 0;
+}
+
+.titleAr {
+  margin-top: 10px;
+  font-size: 2rem;
+  opacity: 0.9;
+  line-height: 1.3;
+}
+
+.subtitle {
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+.lead {
+  margin-top: 10px;
+  max-width: 70ch;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.h2 {
+  font-size: 18px;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin: 0 0 12px 0;
+}
+
+.text {
+  line-height: 1.7;
+  white-space: pre-line;
+  opacity: 0.9;
+  max-width: 80ch;
+}
+
+.kicker {
+  opacity: 0.7;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 0 0 12px 0;
+}
+
+.metaLine {
+  margin-top: 10px;
+  opacity: 0.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  margin: 0;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+}
+
+.imglink {
+  display: block;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.caption {
+  padding: 12px 12px 14px;
+}
+
+.captionText {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+
+.captionMeta {
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.workList {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.workItem {
+  display: block;
+  text-decoration: none;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.03);
+}
+
+.workItem:hover {
+  border-color: rgba(255,255,255,0.6);
+}
+
+.workItemTitle {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+.workItemMeta {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 12px 28px;
+  border: 1px solid white;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: white;
+  color: black;
+}
+
+body.page {
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* HOME: image plein écran, clic pour entrer */
+body.home {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.homeLink {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+}
+
+.homeImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* HOME FULLSCREEN OVERRIDE (keep at very bottom) */
+html, body {
+  height: 100% !important;
+}
+
+body.home {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  width: 100vw !important;
+  overflow: hidden !important;
+  background: #000 !important;
+}
+
+.homeEnter {
+  position: fixed !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.homeBg {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}

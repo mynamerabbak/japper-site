@@ -1,16 +1,105 @@
 ---
-
+const WORK_PATH = "/work";
+const HERO_SRC = "/me_JAPPER_pic.jpg";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Japper</title>
+  </head>
+
+  <body>
+    <a class="enter" href={WORK_PATH} aria-label="Entrer dans le site">
+      <img class="hero" src={HERO_SRC} alt="" loading="eager" decoding="async" fetchpriority="high" />
+    </a>
+
+    <script>
+      const WORK_PATH = "/work";
+      let navigating = false;
+
+      const go = () => {
+        if (navigating) return;
+        navigating = true;
+        window.location.assign(WORK_PATH);
+      };
+
+      // Scroll / trackpad
+      window.addEventListener(
+        "wheel",
+        (e) => {
+          if (Math.abs(e.deltaY) > 1) go();
+        },
+        { passive: true }
+      );
+
+      // Touch (swipe)
+      let y0 = null;
+      window.addEventListener(
+        "touchstart",
+        (e) => {
+          y0 = e.touches && e.touches[0] ? e.touches[0].clientY : null;
+        },
+        { passive: true }
+      );
+
+      window.addEventListener(
+        "touchend",
+        (e) => {
+          if (y0 === null) return;
+          const y1 = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : null;
+          if (y1 === null) return;
+          const dy = y0 - y1;
+          if (dy > 20) go();
+          y0 = null;
+        },
+        { passive: true }
+      );
+
+      // Clavier
+      window.addEventListener("keydown", (e) => {
+        const k = e.key;
+        if (k === "Enter" || k === " " || k === "Spacebar" || k === "ArrowDown" || k === "PageDown") go();
+      });
+
+      // Diagnostic simple : si l'image ne charge pas, rediriger vers un état visible dans la console
+      const img = document.querySelector("img.hero");
+      if (img) {
+        img.addEventListener("error", () => {
+          console.error("[HOME] Image introuvable à l’URL:", img.getAttribute("src"));
+        });
+      }
+    </script>
+
+    <style>
+      :global(html, body) {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+      }
+
+      .enter {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .hero {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+      }
+    </style>
+  </body>
 </html>
