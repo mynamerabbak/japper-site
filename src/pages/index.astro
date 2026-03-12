@@ -1,6 +1,6 @@
 ---
 const WORK_PATH = "/work";
-const HERO_SRC = "/me_JAPPER_pic.jpg";
+const HERO_SRC = "/front_page_metal.jpg";
 ---
 
 <!doctype html>
@@ -13,7 +13,15 @@ const HERO_SRC = "/me_JAPPER_pic.jpg";
 
   <body>
     <a class="enter" href={WORK_PATH} aria-label="Entrer dans le site">
-      <img class="hero" src={HERO_SRC} alt="" loading="eager" decoding="async" fetchpriority="high" />
+      <img
+        class="hero"
+        src={HERO_SRC}
+        alt=""
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        style="width:100vw;height:100vh;object-fit:cover;display:block;"
+      />
     </a>
 
     <script>
@@ -88,14 +96,16 @@ const HERO_SRC = "/me_JAPPER_pic.jpg";
         inset: 0;
         width: 100vw;
         height: 100vh;
+        margin: 0;
+        padding: 0;
         display: block;
         text-decoration: none;
         cursor: pointer;
       }
 
       .hero {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         display: block;
         object-fit: cover;
         object-position: center;
